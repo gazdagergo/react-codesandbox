@@ -6,6 +6,7 @@ export default function App() {
     isChecked: false,
     disabled: false
   });
+  const [inputValue, setInputValue] = useState('')
 
   const handleChange = (e) => {
     setParameters({
@@ -14,13 +15,20 @@ export default function App() {
     });
   };
 
+  const handleInputChange = e => {
+    setInputValue(e.target.value)
+  }
+
   return (
     <div className="App">
-      {console.log("hello")}
       <h1>Hello CodeSandbox</h1>
       <h2>Start editing to see some magic happen!</h2>
       <input value={1} type="checkbox" onChange={handleChange} />
       {parameters.isChecked ? "yes" : "no"}
+      <input type="text" onChange={handleInputChange} value={inputValue} />
+      <div style={{
+        color: inputValue.length > 3 ? 'green' : 'red'
+      }}>color</div>
     </div>
   );
 }
